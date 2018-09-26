@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "standard",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react",
+    "cypress"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  }
+
+  },
+  "env": {
+    "cypress/globals": true
+  }
+
+}
