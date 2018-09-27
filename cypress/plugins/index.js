@@ -1,6 +1,10 @@
 // cypress/plugins/index.js
-const cypressEslint = require('cypress-eslint-preprocessor');
- 
-module.exports = (on) => {
-    on('file:preprocessor', cypressEslint());
+
+// export a function
+module.exports = (on, config) => {
+
+  // bind to the event we care about
+  //on('<event>', (arg1, arg2) => {
+    // plugin stuff here
+ // })
 }

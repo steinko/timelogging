@@ -1,25 +1,40 @@
 {
-    "extends": [
-        "standard",
+  "extends": [
+    "standard",
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:node/recommended",
+    "plugin:promise/recommended"
   ],
   "plugins": [
     "react",
-    "cypress"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
-  }
-
+    "cypress",
+    "import",
+    "node",
+    "promise"
+   ],
+  "rules": {
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
   },
   "env": {
     "cypress/globals": true
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",                                
+      "pragma": "React",  
+      "version": "16.5.2" 
+    },
+    "propWrapperFunctions": [ "forbidExtraProps" ]                                                 
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 
 }
