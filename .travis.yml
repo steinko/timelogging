@@ -6,20 +6,9 @@ addons:
   sonarcloud:
 
 install:
-- 
 - npm i react
-- npm i react-router-dom
 - npm i react-script
-- npm i -D cypress@3.1.0
-- npm i -D cypress-eslint-preprocessor 
-- npm i -D eslint 
-- npm i -D eslint-config-standard
-- npm i -D eslint-plugin-cypress
-- npm i -D eslint-plugin-import
-- npm i -D eslint-plugin-node
-- npm i -D eslint-plugin-promise
-- npm i -D  eslint-plugin-standard
-#- npm audit fix
+- npm i -D cypress
 
 before_script:
 - npm start &
