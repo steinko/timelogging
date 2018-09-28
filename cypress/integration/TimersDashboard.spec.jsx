@@ -25,4 +25,11 @@ describe('Unit test TimeDashboard', ()=> {
      it('shouls exist a class "column"', () => { 
         expect(timersDashboard.find('.column').exists()).to.equal(true)
      })
+
+     it('should contain a EdittableTimerList', () => { 
+        expect(timersDashboard.find('EditableTimerList').exists()).to.equal(true)
+     })
+     it('should contain a TogableTimerForm', () => { 
+        expect(timersDashboard.find('TogableTimerForm').exists()).to.equal(true)
+     })
  } )

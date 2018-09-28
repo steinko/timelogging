@@ -10,12 +10,12 @@ describe('Unit test TimerForm', () => {
     beforeEach(()=> { 
          timerForm  = shallow(<TimerForm />)
     })
+
     it('should render', () => { 
-     
        expect(timerForm.is('div')).to.equal(true)
      })
+
      it('should render', () => { 
-      
        expect(timerForm.find('.ui_centered_card').exists()).to.equal(true)
      })
  })
