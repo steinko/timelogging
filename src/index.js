@@ -1,4 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TimeresDashboard from './components/TimersDashboard'
 
-ReactDOM.render(<p>Hello world!!!</p>, document.getElementById('root'));
+ReactDOM.render(<TimeresDashboard />, document.getElementById('root'))

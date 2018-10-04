@@ -1,15 +1,19 @@
 describe(('End to end test for Timer'), () => {
-   // before(()=> { cy.visit('http://localhost3030')
-        
-    //})
-    context('No existing timers',()=>{ 
-        it('should add a new timer',()=>{  
+ // before(() => {
+//    cy.visit(/')
+//  })
 
-        })
-    } )
-     context('Tmers exists',()=>{
-         it('should add a new timer', ()=>{ 
+  context('No existing timers', () => {
+    it('should add a new timer', () => {
 
-          })
-      } )
+    })
   })
+  context('Tmers exists', () => {
+    it('should add a new timer', () => {
+
+    })
+    xit('should display the title for the Editabletimer ', () => {
+      cy.get('input').should('have.data','defaultValue' ,'Learn JavaScript' )// eslint-disable-line
+    })
+  })
+})

@@ -8,7 +8,8 @@ export default class TimersDashboard extends React.Component {
       <div className = 'ui-three-column-centered-grid'>
         <div className = 'column'>
           <EditableTimerList />
-          <TogableTimerForm />
+          <TogableTimerForm
+            isOpen = { true } />
 
         </div>
       </div>
