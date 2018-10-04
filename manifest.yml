@@ -2,6 +2,5 @@
 applications:
 - name: timeLoggingSteinko
 instances: 1
-disk_quota: 256MB
-memory: 128MB
+
 
