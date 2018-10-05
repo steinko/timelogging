@@ -1,19 +1,19 @@
 import React from 'react'
 import EditableTimerList from './EditableTimerList' // eslint-disable-line
 import TogableTimerForm from './TogableTimerForm'  // eslint-disable-line
+import { Grid } from 'semantic-ui-react'
 
 export default class TimersDashboard extends React.Component {
   render () {
     return (
-      <div className = 'ui-three-column-centered-grid'>
-        <div className = 'column'>
+      <Grid centered columns = {3} >
+        <Grid.Column>
           <EditableTimerList />
           <TogableTimerForm
             isOpen = { true } />
 
-        </div>
-      </div>
-
+        </Grid.Column>
+      </Grid>
     )
   }
 }

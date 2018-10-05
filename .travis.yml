@@ -6,12 +6,7 @@ addons:
   sonarcloud:
 
 install:
-- npm i react
-- npm i react-dom
-- npm i react-script
-- npm i -D cypress
-- npm i -D enzyme
-- npm i -D enzyme-adapter-react-16
+- npm install
 before_script:
 - npm start &
 

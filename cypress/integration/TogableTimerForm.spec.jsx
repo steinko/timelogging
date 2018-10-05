@@ -7,9 +7,17 @@ import TimerForm from '../../src/components/TimerForm.jsx' // eslint-disable-lin
 configure({ adapter: new Adapter() })
 
 describe('Unit test TogableTimerForm', () => {
-  it('should render <div> </div>', () => {
+  it('should conatin a segment', () => {
     const togableTimerForm = shallow(<TogableTimerForm isOpen = { false } />)
-    expect(togableTimerForm.is('div')).to.equal(true)
+    expect(togableTimerForm.is('Segment')).to.equal(true)
+  })
+
+  xit('should conatin a plus button', () => {
+    const togableTimerForm = shallow(<TogableTimerForm isOpen = { false } />)
+    expect(togableTimerForm.find('button')
+    .find('Icon')
+    .find([name= 'plus' ])) // eslint-disable-line
+    .to.equal(true)
   })
 
   it('should render TimerForm', () => {

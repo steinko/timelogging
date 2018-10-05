@@ -1,16 +1,25 @@
 {
-   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "standard"
-  ],
-  "plugins": [
-    "react",
-    "cypress"
-    
-  ],
-  "env": {
-    "cypress/globals": true
+  "extends": 
+    [
+     "standard",
+     "eslint:recommended",
+     "plugin:react/recommended"
+    ],
+   "plugins": 
+     [
+      "react"
+    ],
+    "settings": {
+      "react": {
+        "createClass": "createReactClass",                                   
+        "pragma": "React",  
+        "version": "16.5.2"
+    },
+     "propWrapperFunctions": [ "forbidExtraProps" ] 
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
-
