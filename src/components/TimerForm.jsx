@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, Form , Button } from 'semantic-ui-react'
 
+//Displayes the time's edit form
 export default class TimerForm extends React.Component {
   render () {
      const submitText = this.props.title ? 'Update': 'Create'
