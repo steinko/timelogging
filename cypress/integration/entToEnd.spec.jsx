@@ -42,6 +42,11 @@ describe('End to end test for Timer', () => {
       cy.get('Button').contains('Cancel')
      })
 
+      it('should conain a button cansel ', () => {
+      cy.get('Button').contains('Start')
+     })
+
+
      it('should conain a button Create ', () => {
        cy.get('Button').contains('Create')
      })
