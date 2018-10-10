@@ -7,15 +7,23 @@ describe('End to end test for Timer', () => {
 
   context('No existing timers', () => {
 
-    it('should add a new timer', () => {
-
+    xit('should add a new timer', () => {
+      cy.get('#Create')
+        .click()    
+      cy.get('Label')
+      .  contains('Title')
+        .type('Refine Squawk')
+      cy.get("Button[color= 'blue' ]")
+        .click()
+      cy.get('Timer')
+        .contains('Refine Squawk')
     })
 
   })
 
   context('Timers exists', () => {
 
-    it('Should containn  titel Learn Java', ()=> { 
+    xit('Should contain  titel Learn Java', ()=> { 
       cy.contains('Learn Java')
     })
 
@@ -24,37 +32,20 @@ describe('End to end test for Timer', () => {
     })
 
     xit('should contain Learn JavaScript', ()=> { 
-      cy.get ('label')
+      cy.get ('Label')
         .contains('Title')
         .next()
         .find( '[defaultValue = "Learn JavaScript" ]')
     })
    
     xit('should display the title for the Editabletimer ', () => {
-      cy.get ('label')
+      cy.get ('Label')
         .contains('Title')
         .next()
         .should('have.data','defaultValue' ,'Learn JavaScript' )
     })
-
-
-      it('should conain a button cansel ', () => {
-      cy.get('Button').contains('Cancel')
-     })
-
-      it('should conain a button cansel ', () => {
-      cy.get('Button').contains('Start')
-     })
-
-
-     it('should conain a button Create ', () => {
-       cy.get('Button').contains('Create')
-     })
-
-     it('should conain a button Update ', () => {
-      cy.get('Button').contains('Update')
-     })
-     it('should conain a button Update ', () => {
+     
+     it('should conain time ', () => {
       cy.contains('02:29:46')
      })
   })

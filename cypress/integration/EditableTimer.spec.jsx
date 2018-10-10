@@ -19,12 +19,13 @@ describe('Unit Test Editable Timer', () => {
       .is('TimerForm'))
       .to.equal(true)
   })
-  xit('should contain tmer with tite Learn Java', () => {
+
+  it('should contain timer with tite Learn Java', () => {
     var title = 'Learn Java'
     expect(mount(<EditableTimer editFormOpen = { true } title = { title } />)
       .find('TimerForm')
       .find('Input')
-      .containsMatchingElement(<input defaultValue={title} />))
+      .containsMatchingElement(<input value={title} />))
       .to.equal(true)
   })
 })
