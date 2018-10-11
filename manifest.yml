@@ -4,8 +4,8 @@ applications:
   instances: 1
   disk_quota: 1G
   buildpack: 
-    - nodejs 
-    - staticfile
+    - nodejs_buildpack 
+    - staticfile_buildpack
  
     
 
