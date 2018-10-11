@@ -1,7 +1,13 @@
 ---
 applications:
 - name: timeLoggingSteinko
-instances: 1
-disk_quota: 1G
+  instances: 1
+  disk_quota: 1G
+  buildpack: 
+   -nodejs_buildpack 
+   -staticfile_buildpack
+ 
+    
+
 
 
