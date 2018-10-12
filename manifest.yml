@@ -4,8 +4,10 @@ applications:
   instances: 1
   disk_quota: 1G
   buildpack: 
-    - nodejs_buildpack 
-    - staticfile_buildpack
+    nodejs_buildpack 
+    staticfile_buildpack
+  env:
+    CF_TRACE: trace.log
  
     
 
