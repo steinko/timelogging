@@ -3,9 +3,6 @@ applications:
 - name: timeLoggingSteinko
   instances: 1
   disk_quota: 1G
-  buildpack: 
-    nodejs
-    staticfile
   env:
     CF_TRACE: trace.log
  
