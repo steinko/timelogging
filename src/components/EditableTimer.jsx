@@ -2,17 +2,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Timer from './Timer' // eslint-disable-line
-import TimerForm from './TimerForm' // eslint-disable-line
+import Timer from './Timer.jsx' // eslint-disable-line
+import TimerForm from './TimerForm.jsx' // eslint-disable-line
 
 // Displays either a timer or a timer's edit form
 export default class EditableTimer extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { isOpen: false  }
+  }
+
+  handelSubmit = (timer) => {  
+    this.props.onFormSubmit(timer)
+    this.closeForm()
+   }
+
+  closeForm = () => { 
+     this.setState( {isOpen: false})
+    }
+
   render () {
     if (this.props.editFormOpen) { // eslint-disable-line
       return (
         <TimerForm
           title = {this.props.title}
-          project = {this.props.project} 
+          project = {this.props.project}
+          onFormSubmit=  {this.handelSubmit}
         />  // eslint-disable-line
       )
     } else {
@@ -33,5 +49,6 @@ EditableTimer.propType = {
   project: PropTypes.string,
   elapsed: PropTypes.string,
   runningSince:PropTypes.string,
-  editFormOpen:PropTypes.boolean
+  editFormOpen:PropTypes.boolean,
+  onFormSubmit:PropTypes.function
   }

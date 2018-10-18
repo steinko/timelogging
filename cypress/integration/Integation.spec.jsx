@@ -1,10 +1,12 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
 import { configure, shallow, mount } from 'enzyme'
-import TimersDashboard from '../../src/components/TimersDashboard'
-import TogableTimerForm from '../../src/components/TogableTimerForm'
-import TimerForm from '../../src/components/TimerForm' // eslint-disable-line
+import sinon from 'sinon'
 
+import TimersDashboard from '../../src/components/TimersDashboard.jsx'
+import TogableTimerForm from '../../src/components/TogableTimerForm.jsx' // eslint-disable-line
+import TimerForm from '../../src/components/TimerForm.jsx' // eslint-disable-line
+import EditableTimer from '../../src/components/EditableTimer.jsx' // eslint-disable-line
 configure({ adapter: new Adapter() })
 
 describe('integration testing', ()=> {
@@ -27,4 +29,35 @@ describe('integration testing', ()=> {
 
         
     }) 
+
+     it('should call ', () => { 
+
+     const obj = { // eslint-disable-line
+          onFormSubmit() { }
+        }
+
+     const timers = [ // eslint-disable-line
+
+       { title: 'Practice squat',
+         openForm:true
+       },
+
+       { title: 'Bake squash',
+        openForm:false 
+      }
+    ]
+     const stub = sinon.stub() // eslint-disable-line
+    // const onFormClose = sinon.spy(EditableTimer, 'onFormClose')
+     const timerArg= stub.withArgs(timers) // eslint-disable-line
+     const onFormsSumitEditableTimer = mount(<EditableTimer onFormSubmit = { stub } editFormOpen = { true }/>)
+      onFormsSumitEditableTimer
+        .find('TimerForm')
+        .find('Button')
+        .first()
+        .simulate('click')
+       // expect(onFormClose).to.have.property('callCount', 1); 
+
+      
+
+    })
 }) 

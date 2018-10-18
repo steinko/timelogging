@@ -1,15 +1,10 @@
-# codemix-vanilla-react
-Template for project creation of React inside CodeMix
+##Manage timers
 
-## Contents
-
-Manage timers.Timers can: 
+Timers can: 
 -transform into edit form
 - delete 
 - start
-- stop
-
-Timers can be: 
+- stop 
 - dislayed in a list.
 - persisted
 - added to the list

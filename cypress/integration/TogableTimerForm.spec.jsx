@@ -1,7 +1,7 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
 import { configure, shallow, mount } from 'enzyme'
-import TogableTimerForm from '../../src/components/TogableTimerForm'
+import TogableTimerForm from '../../src/components/TogableTimerForm.jsx'
 import TimerForm from '../../src/components/TimerForm.jsx' // eslint-disable-line
 
 configure({ adapter: new Adapter() })

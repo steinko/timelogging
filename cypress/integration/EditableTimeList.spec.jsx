@@ -1,7 +1,7 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
 import { configure, shallow, mount } from 'enzyme'
-import EditableTimerList from '../../src/components/EditableTimerList'
+import EditableTimerList from '../../src/components/EditableTimerList.jsx'
 configure({ adapter: new Adapter() })
 
 describe('Unit Test Editable Timer List', () => {

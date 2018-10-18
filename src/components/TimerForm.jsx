@@ -1,11 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 import { Card, Form , Button, Label , Input } from 'semantic-ui-react'
+import uuidv4 from 'uuid/v4'
+
+type Props = { id: uuidv4,
+               title: string,
+               project: string,
+               onFormSubmit: any }
+type State = { title: string }
 
 //Displayes the time's edit form
-export default class TimerForm extends React.Component {
+export default class TimerForm extends React.Component <Props, State> {
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       title: this.props.title || ''
@@ -13,7 +20,7 @@ export default class TimerForm extends React.Component {
     console.log(this.state.title)
   }
 
-  handelTitleChange = (e) => { 
+  handelTitleChange = (e:any) => { 
       this.setState(  
         { title: e.target.value }
       )
@@ -27,7 +34,7 @@ export default class TimerForm extends React.Component {
       
 
   render () {
-     const submitText = this.props.title ? 'Update': 'Create'
+     const submitText = this.props.id ? 'Update': 'Create'
     return (
       
       <Card>
@@ -63,8 +70,4 @@ export default class TimerForm extends React.Component {
   }
 }
 
-TimerForm.propTypes = {
-  title: PropTypes.string,
-  project: PropTypes.string
-}
 

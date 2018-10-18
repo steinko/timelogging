@@ -1,15 +1,26 @@
 import React from 'react'
-import EditableTimerList from './EditableTimerList' // eslint-disable-line
-import TogableTimerForm from './TogableTimerForm'  // eslint-disable-line
+import EditableTimerList from './EditableTimerList.jsx' // eslint-disable-line
+import TogableTimerForm from './TogableTimerForm.jsx'  // eslint-disable-line
+
+import uuidv4 from 'uuid/v4'
 import { Grid } from 'semantic-ui-react'
-import Helper from '../../src/components/Helper'
+import Helper from '../../src/components/Helper.jsx'
 
 //Parent container
 export default class TimersDashboard extends React.Component {
-  state = { timers : [
-    {  title: 'Practice  squate' },
-    {  title:'Bake  squash' }
-   ]  }
+  state = {
+     timers : [
+       { 
+         title: 'Practice  squate',
+         id: uuidv4() 
+        },
+
+      { 
+        title:'Bake  squash' ,
+        id: uuidv4()
+      }
+    ]  
+  }
 
   handleCreateFormSubmit = (timer) => {
     this.createTimer(timer)

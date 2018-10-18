@@ -1,9 +1,17 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import { Card, Icon, Button, Grid } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
+
+
+type Props = { 
+  title: string,
+  project: string,
+  onEditClick: any
+  
+  }
 
 // Displays a given timer
-export default class Timer extends React.Component {
+export default class Timer extends React.Component<Props> { 
   render () {
     return (
       <Card centered >
@@ -25,7 +33,7 @@ export default class Timer extends React.Component {
           <Card.Content extra>
             <Grid>
                <Grid.Column floated = 'right' width =   { 1 }>
-                 <Icon  name = 'edit' />
+                 <Button icon = 'edit' onClick= { this.props.onEditClick } />
               </Grid.Column>
               
                <Grid.Column floated = 'right' width =   { 1 } > 
@@ -44,7 +52,4 @@ export default class Timer extends React.Component {
   }
 }
 
-Timer.propType = {
-  title: PropTypes.string,
-  project:PropTypes.string
-  }
+

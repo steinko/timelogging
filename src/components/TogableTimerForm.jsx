@@ -1,5 +1,5 @@
 import React from 'react'
-import TimerForm from './TimerForm' // eslint-disable-line
+import TimerForm from './TimerForm.jsx' // eslint-disable-line
 import { Segment, Button, Icon } from 'semantic-ui-react'
 
 //Displayes a form to create a new timer
@@ -23,7 +23,7 @@ export default class TogableTimerForm extends React.Component {
   render () {
     if (this.state.isOpen) { // eslint-disable-line
       return (
-          <TimerForm 
+          <TimerForm  id = 'timerForm'
             onFormSubmit = {this.handelFormSubmit }/>)
     } else {
       return (

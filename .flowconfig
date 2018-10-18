@@ -1,9 +1,6 @@
 [ignore]
-./cypress
-./node_modues
 
 [include]
-./src/coponents/*.jsx
 
 [libs]
 

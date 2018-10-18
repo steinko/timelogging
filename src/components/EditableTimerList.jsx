@@ -1,6 +1,6 @@
 
 import React from 'react'
-import EditableTimer from './EditableTimer'  // eslint-disable-line
+import EditableTimer from './EditableTimer.jsx'  // eslint-disable-line
 
 // Displayes a list of timer containers
 export default class EditableTimerList extends React.Component  {

@@ -1,18 +1,20 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
 import { configure, shallow } from 'enzyme'
-import TimerForm from '../../src/components/TimerForm'
+import uuidv4 from 'uuid/v4'
+
+import TimerForm from '../../src/components/TimerForm.jsx'
 configure({ adapter: new Adapter() })
 
 describe('Unit test TimerForm', () => {
 
   var timerForm
-  var title = 'Learn React'
+  
 
-  context('With Title', ()=> { 
-
+  context('With id', ()=> { 
+   let id = uuidv4()
     beforeEach(() => {
-      timerForm = shallow(<TimerForm title = {title}/>)
+      timerForm = shallow(<TimerForm id = {id}/>)
     })
 
     it('should conatin class card', () => {
@@ -48,17 +50,23 @@ describe('Unit test TimerForm', () => {
       .to.equal(true)
     })
 
-    it('should store poperty tite', () =>  {
-      expect(timerForm.state().title).to.equal('Learn React')
-    })
+  })
+
+  it('should store poperty title', () =>  {
+
+      const title = 'Learn React'
+      const id = uuidv4()
+      const titletimerForm = shallow(<TimerForm id = {id} title ={title} />)
+      expect(titletimerForm.state().title).to.equal(title)
+  })
 
 
-  context('Blank Title', ()=> {
+  context('Blank id', ()=> {
 
     var bTimerForm
 
     beforeEach(() => {
-      bTimerForm = shallow(<TimerForm title = ''/>)
+      bTimerForm = shallow(<TimerForm id = {null} />)
     })
 
     it("should contain a blue create button", () => {
@@ -98,7 +106,7 @@ describe('Unit test TimerForm', () => {
         .find({ color: 'blue' }) 
         .simulate('click')
         expect(bTimerFormInstance.handelSubmit).to.be.called
+        
       })
    })
-})
 })
