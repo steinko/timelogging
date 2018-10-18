@@ -53,6 +53,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-script": "^2.0.5",
+    "sinon": "^7.0.0",
     "webpack": "^4.20.2"
   },
   "browserslist": [
