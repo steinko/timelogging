@@ -1,7 +1,11 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
-import { configure, shallow, mount } from 'enzyme'
-import sinon from 'sinon'
+import { configure, mount, shallow } from 'enzyme'
+
+import uuidv4 from 'uuid/v4'
+
+
+
 import EditableTimer from '../../src/components/EditableTimer.jsx'
 import Timer from '../../src/components/Timer.jsx' // eslint-disable-line
 import TimerForm from '../../src/components/TimerForm.jsx' // eslint-disable-line
@@ -17,43 +21,84 @@ describe('Unit Test EditableTimer', () => {
     var editableTimer
 
     beforeEach(() => {  
-      editableTimer = shallow(<EditableTimer />)
+      editableTimer = mount(<EditableTimer />)
     })
 
     it('expect a isOpen state that is false', () => {
       expect(editableTimer.
-        state().isOpen)
+        state().isOpen
+        )
         .to.equal(false)
          
     })
 
     it('expect a timer', () => {
       expect(editableTimer
-        .is('Timer')
-      )
-      .to.equal(true)
+        .find('Timer')
+        .exists()
+        )
+        .to.equal(true)
     })
 
-     it('expect a isOpen state that is false ', () => { 
-      // const closeForm = sinon.spy(EditableTimer.prototype,'closeForm')
-       const editableTimeInstance =  editableTimer.instance()
-       editableTimeInstance.closeForm()
-       expect(editableTimer
+      
+  
+    it('expext state isOpen true' , () =>  { 
+     const editableTimeInstance =  editableTimer.instance()
+     editableTimeInstance.handleEditClick()
+      expect(editableTimer
         .state().isOpen
        )
-      .to.equal(false)
-      //expect(closeForm.prototype).to.have.property('callCount', 1);
-    })
-
+      .to.equal(true)
   })
 
-    xit('expect a timer with title Learn Java', () => {
-      var title = 'Learn Java'
-      expect(mount(<EditableTimer  title = { title } />)
-        .find('TimerForm')
-        .find('Input')
-        .containsMatchingElement(<input value={title} />))
-        .to.equal(true)
-  })
+  
     
-})
+
+  })
+
+
+    it('expect a timerform with title Learn Java', () => {
+       let title = 'Learn Java'
+     
+        const editableTimerMount = shallow(<EditableTimer  title = { title } />)
+        const instance = editableTimerMount.instance()
+        instance.handleEditClick()
+        const timerForm = editableTimerMount.find('TimerForm')
+        expect(timerForm.exists()).to.equal(true)
+        expect(timerForm.props().title) .to.equal(title)
+        
+  })
+
+  it('expect a timerform with id', () => {
+      var id = uuidv4()
+        const editableTimerMount = shallow(<EditableTimer  id = { id } />)
+        const instance = editableTimerMount.instance()
+        instance.handleEditClick()
+       const timerForm = editableTimerMount.find('TimerForm')
+       expect(timerForm.props().id).to.equal(id)
+  })
+
+  
+
+  it('expect a timer with title Learn Java', () => {
+      let title = 'Learn Java'
+      expect(mount(<EditableTimer  title = { title }    />)
+        .find('Timer')
+        .contains( { title } )
+      )
+      .to.equal(true)
+       
+  })
+
+  it('expect a timer with id', () => {
+      let id = uuidv4()
+      expect(mount(<EditableTimer  id = { id }   />)
+        .find('Timer')
+        .props().id 
+      )
+      .to.equal(id)
+       
+  })
+
+ })
+    

@@ -1,6 +1,6 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
-import { configure, shallow, mount } from 'enzyme'
+import { configure, shallow, mount, render } from 'enzyme'
 import sinon from 'sinon'
 
 import TimersDashboard from '../../src/components/TimersDashboard.jsx'
@@ -18,7 +18,6 @@ describe('integration testing', ()=> {
       const timerForm = togablTimerForm.find('TimerForm')
       expect(timerForm).to.have.lengthOf(1)
       timerForm
-
       .find('Button')
        .find({ color: 'blue' }) 
         .simulate('change', {target: {value:'Cooler Title'}})
@@ -30,7 +29,7 @@ describe('integration testing', ()=> {
         
     }) 
 
-     it('should call ', () => { 
+     xit('should call ', () => { 
 
      const obj = { // eslint-disable-line
           onFormSubmit() { }
@@ -59,5 +58,21 @@ describe('integration testing', ()=> {
 
       
 
+    })
+
+    xit('should close timer form', () => {
+      const togableTimerForm = render(<TogableTimerForm />)
+      const  togableTimerForminstance = togableTimerForm.instance()
+      togableTimerForminstance.handelFormOpen()
+      expect(togableTimerForm.state().isOpen).to.equal(true)
+      const children = togableTimerForm
+      .children()
+      expect(children.exists()).to.equal(true)
+      const timerForm = children.find('TimerForm')
+      expect(timerForm.exists()).to.equal(true)
+      timerForm.find('Button')
+        .find({ color: 'red' }) 
+        .simulate('click')
+      expect(togableTimerForm.state().isOpen).to.equal(false)
     })
 }) 

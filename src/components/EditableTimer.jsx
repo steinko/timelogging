@@ -1,17 +1,38 @@
-
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
+import uuidv4 from 'uuid/v4'
 
 import Timer from './Timer.jsx' // eslint-disable-line
 import TimerForm from './TimerForm.jsx' // eslint-disable-line
 
-// Displays either a timer or a timer's edit form
-export default class EditableTimer extends React.Component {
+
+
+type Props = {
+  onFormSubmit:any,
+  editFormOpen: boolean,
+  title: string,
+  id: uuidv4,
+  key: uuidv4
+ }
+
+ type State = { isOpen: boolean }
+ 
+/** 
+* Displays either a timer or a timer's edit form
+*/
+export default class EditableTimer extends React.Component <Props,State>{
 
   constructor(props) {
     super(props)
-    this.state = { isOpen: false  }
+    this.state = { 
+      isOpen: false,
+
+      }
   }
+
+  handleEditClick = () => { 
+    this.openForm()
+   }
 
   handelSubmit = (timer) => {  
     this.props.onFormSubmit(timer)
@@ -22,33 +43,27 @@ export default class EditableTimer extends React.Component {
      this.setState( {isOpen: false})
     }
 
+    openForm = () => { 
+      this.setState( {isOpen: true})
+      }
+
   render () {
-    if (this.props.editFormOpen) { // eslint-disable-line
+    if (this.state.isOpen) { 
       return (
         <TimerForm
           title = {this.props.title}
-          project = {this.props.project}
+          id = {this.props.id}
           onFormSubmit=  {this.handelSubmit}
-        />  // eslint-disable-line
-      )
+        />  
+      );
     } else {
       return (
         <Timer 
           title = {this.props.title}
-          project = {this.props.project} 
-          elapsed = {this.props.elapsed} 
-          runningSince = {this.props.runningSince} 
+          id = {this.props.id}
+          onEditClick = {this.handelEditClick}
         />
       )
     }
   }
 }
-
-EditableTimer.propType = {
-  title: PropTypes.string,
-  project: PropTypes.string,
-  elapsed: PropTypes.string,
-  runningSince:PropTypes.string,
-  editFormOpen:PropTypes.boolean,
-  onFormSubmit:PropTypes.function
-  }

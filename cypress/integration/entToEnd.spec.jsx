@@ -10,14 +10,12 @@ describe('End to end test for Timer', () => {
     xit('should add a new timer', () => {
       // click on  the create timer button 
       cy.get('#Create')
-        .click().debug()
+        .click()
      //A Timerform should be displayed
      cy.get('#timerForm')
      
       // check that a empty titel and project fields and a create button displa is displayed
-      .find('Lable')
-      .contains('Title')
-      .closest('Input').as('TitleField')
+      .find('#titleField').as('TitleField')
       .contains('')
       // Enter the Title 
       cy.get('@TitleField')
@@ -74,31 +72,13 @@ describe('End to end test for Timer', () => {
        .contains('Changed title text')
     } )
 
-    xit('Should contain  titel Learn Java', ()=> { 
-      cy.contains('Learn Java')
-    })
-
-    it('Should contain project cooler project', ()=> { 
-      cy.contains('Cooler Project')
-    })
-
-    xit('should contain Learn JavaScript', ()=> { 
-      cy.get ('Label')
-        .contains('Title')
-        .next()
-        .find( '[defaultValue = "Learn JavaScript" ]')
-    })
    
-    xit('should display the title for the Editabletimer ', () => {
-      cy.get ('Label')
-        .contains('Title')
-        .next()
-        .should('have.data','defaultValue' ,'Learn JavaScript' )
-    })
+
+    
+   
+   
+    
      
-     it('should conain time ', () => {
-      cy.contains('02:29:46')
-     })
   })
 })
 

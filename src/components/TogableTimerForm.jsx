@@ -1,9 +1,21 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import TimerForm from './TimerForm.jsx' // eslint-disable-line
-import { Segment, Button, Icon } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 
-//Displayes a form to create a new timer
-export default class TogableTimerForm extends React.Component {
+type Props = { 
+
+  onFormSubmit: any
+ }
+
+ type State = { 
+   isOpen: boolean 
+  }
+
+/** 
+* Displayes a form to create a new timer
+*/
+export default class TogableTimerForm extends React.Component<Props,State> {
   
   state = { 
     isOpen: false
@@ -12,6 +24,11 @@ export default class TogableTimerForm extends React.Component {
   handelFormOpen = () => {
       this.setState({
         isOpen:true
+      })
+    }
+    handelFormClose = () => {
+      this.setState({
+        isOpen:false
       })
     }
 
@@ -24,19 +41,18 @@ export default class TogableTimerForm extends React.Component {
     if (this.state.isOpen) { // eslint-disable-line
       return (
           <TimerForm  id = 'timerForm'
-            onFormSubmit = {this.handelFormSubmit }/>)
+            onFormSubmit = {this.handelFormSubmit }
+            omFormClose =  {this.handelFormClose }  
+          />)
     } else {
       return (
         <Segment basic textAlign = 'center'>
           <Button 
             basic 
-            icon 
+            icon = 'plus'
             id = 'Create'
             onClick={this.handelFormOpen }
-          >
-          
-         </Button>
-         <Icon name = 'plus'/>
+          />         
         </Segment>
       )
     }

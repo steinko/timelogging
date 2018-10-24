@@ -1,24 +1,25 @@
 // @flow
 import * as React from 'react'
-import { Card, Form , Button, Label , Input } from 'semantic-ui-react'
+import { Card, Form , Button, Label  } from 'semantic-ui-react'
 import uuidv4 from 'uuid/v4'
 
 type Props = { id: uuidv4,
                title: string,
-               project: string,
                onFormSubmit: any }
+
 type State = { title: string }
 
-//Displayes the time's edit form
+/**
+ * Displayes the time's edit form
+ */
 export default class TimerForm extends React.Component <Props, State> {
 
   constructor(props: Props) {
     super(props)
     this.state = {
       title: this.props.title || ''
-    }
-    console.log(this.state.title)
-  }
+     }
+   }
 
   handelTitleChange = (e:any) => { 
       this.setState(  
@@ -27,41 +28,40 @@ export default class TimerForm extends React.Component <Props, State> {
   }
 
   handelSubmit = () => {
+   // console.log(this.props.onFormSubmit.debug())
     this.props.onFormSubmit({
+      id: this.props.id,
       title: this.state.title
       })
     }
       
-
-  render () {
+  render()  {
      const submitText = this.props.id ? 'Update': 'Create'
-    return (
+     return (
       
       <Card>
         <Card.Content>
           <Form>
             <Form.Field>
               <Label>Title</Label>
-              <Input type = 'text' 
-                value = { this.props.title } 
+              <input type = 'text' id = 'titleField'
+                value = { this.state.title } 
                 onChange = { this.handelTitleChange } />
-           </Form.Field>
-
-           <Form.Field>
-              <Label>Project</Label>
-              <Input type = 'text' defaultValue = {this.props.project } />
            </Form.Field>
            </Form>
 
           <Button 
             basic 
             color= 'blue'
-            onClick = { this.handelSubmit }
-          >
+            onClick = { this.handelSubmit } >
             { submitText }
           </Button>
 
-          <Button basic color = 'red'>
+          <Button 
+            basic 
+            color = 'red'
+            onClick = { this.props.onFormClose }
+          >
             Cancel
           </Button>
         </Card.Content>
@@ -69,5 +69,3 @@ export default class TimerForm extends React.Component <Props, State> {
     )
   }
 }
-
-

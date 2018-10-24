@@ -13,7 +13,7 @@ describe('Unit test Helper', () => {
     const timerFormWithId = helper.newTimer(timerForm)
 
     expect(timerFormWithId.title === '').to.equal(true)
-    expect(timerFormWithId.id === undefined).to.equal(false)
+    expect(timerFormWithId.id === undefined).to.equal(true)
     //expect(timerFormWithId.state().project).to.equal('Project')
   })
 })

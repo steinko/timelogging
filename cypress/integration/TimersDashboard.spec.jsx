@@ -1,13 +1,14 @@
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
 import { configure, shallow } from 'enzyme'
-import uuidv4 from 'uuid/v4'
+import sinon from 'sinon'
+
 
 import TimersDashboard from '../../src/components/TimersDashboard.jsx'
 import TimerForm from '../../src/components/TimerForm.jsx'
 configure({ adapter: new Adapter() })
 
-describe('Unit test TimeDashboard', () => {
+describe('Unit test Timers Dashboard', () => {
   var timersDashboard
 
   beforeEach(() => {
@@ -22,16 +23,17 @@ describe('Unit test TimeDashboard', () => {
     expect(timersDashboard.exists()).to.equal(true)
   })
 
-  xit('shouls conatin a three column centered grid', () => {
+  it('should conatin a three column centered grid', () => {
     expect(timersDashboard
       .find('Grid')
-      .find([columns = 3]) // eslint-disable-line
+      .find({columns: 3 }) // eslint-disable-line
       .exists()).to.equal(true)
   })
   
   it('should contain a EdittableTimerList', () => {
     expect(timersDashboard.find('EditableTimerList').exists()).to.equal(true)
   })
+
   it('should contain a TogableTimerForm', () => {
     expect(timersDashboard.find('TogableTimerForm').exists()).to.equal(true)
   })
@@ -47,32 +49,40 @@ describe('Unit test TimeDashboard', () => {
      return element.title === '' })
      expect(timer=== undefined).to.equal(false)
      expect(timer.title === '').to.equal(true)
-     expect(timer.id === undefined).to.equal(false)
+     expect(timer.id === undefined).to.equal(true)
   })
 
   it('should store timers', () => {
-   let timeForm = shallow (<TimerForm  title = 'Title' />)
+   let timeForm = shallow (<TimerForm  />)
     const instance  = timersDashboard.instance()
     instance.handleCreateFormSubmit(timeForm)
-    timeForm = shallow (<TimerForm  title = 'Title2' />)
+    timeForm = shallow (<TimerForm  />)
     instance.handleCreateFormSubmit(timeForm)
     const editabeTimersList = timersDashboard.children()
     expect(editabeTimersList.children()).to.have.length(2)
    
    })
 
-   xit('should execute handelEditFormSubmit', () => { 
-     const timers = timersDashboard.state.timers
+   it('should change title ', () => { 
+      const timers = timersDashboard.state().timers
       const timer =  timers[0]
       const title = 'Changed'
-      timer.title = { title }
-    const instance  = timersDashboard.instance()
-    instance.handleEditFormSubmit(timer)
-    const timers2 = timersDashboard.state.timers
-    const timerForm = timers2.find( element => { 
-     return element.state().title === { title } })
-    expect(timerForm.state().title).to.equal({ title }) 
+      timer.title = title
+      const instance  = timersDashboard.instance()
+      instance.handelEditFormSubmit(timer)
+      const timers2 = timersDashboard.state().timers
+      const timerForm = timers2.find( element => { 
+      return element.title === title })
+      expect(timerForm.title).to.equal(title) 
 
+   })
+
+   xit('shold conect a function to popert onForm ' , () => { 
+      const timer = { }
+      const instance  = timersDashboard.instance()
+      var stub = sinon(instance, 'handelEditFormSubmit')
+      const editableTimerList = timersDashboard.find('EditableTimersList')
+      expect(editableTimerList.props().onFormSubmit).to.equal(instance.handelEditFormSubmit(timer))
    })
 
 

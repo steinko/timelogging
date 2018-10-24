@@ -1,4 +1,5 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import EditableTimerList from './EditableTimerList.jsx' // eslint-disable-line
 import TogableTimerForm from './TogableTimerForm.jsx'  // eslint-disable-line
 
@@ -6,8 +7,19 @@ import uuidv4 from 'uuid/v4'
 import { Grid } from 'semantic-ui-react'
 import Helper from '../../src/components/Helper.jsx'
 
-//Parent container
-export default class TimersDashboard extends React.Component {
+type Props = { }
+
+type TimerData = { title:string,
+                   id: uuidv4 
+                  }
+
+type State = {  timers: Array<TimerData>
+             }
+
+/** 
+* Parent container
+*/
+export default class TimersDashboard extends React.Component <Props,State> {
   state = {
      timers : [
        { 
@@ -22,27 +34,50 @@ export default class TimersDashboard extends React.Component {
     ]  
   }
 
-  handleCreateFormSubmit = (timer) => {
+
+  handleCreateFormSubmit = (timer:TimerData) => {
     this.createTimer(timer)
     }
 
-    createTimer = (timer) => {
-      const helper = new Helper
+    createTimer = (timer:TimerData) => {
+      const helper = new Helper()
       const t = helper.newTimer(timer)
       this.setState({ 
         timers: this.state.timers.concat(t)
       })
      }
 
+     handelEditFormSubmit = (attrs:TimerData) => { 
+       this.updateTimer(attrs)
+        }
+       
+
+      updateTimer = (attrs:TimerData) => { 
+        this.setState({ 
+         timers: this.state.timers.map((timer) => { 
+           if(timer.id === attrs.id)  { 
+
+             return Object.assign( { }, timer,{
+               title: attrs.title
+            })
+           } else {
+             return timer
+           }  
+        })
+      })
+       }
+
   render () {
     return (
       <Grid centered columns = {3} >
         <Grid.Column>
           <EditableTimerList
-            timers = {this.state.timers } />
+            timers = {this.state.timers } 
+            onFormsSubmit= { this.handleEditFormSubmit}
+          />
           <TogableTimerForm
-          onFormSubmit= { this.handleCreateFormSubmit}
-            isOpen = { false } />
+            onFormSubmit= { this.handleCreateFormSubmit}
+          />
 
         </Grid.Column>
       </Grid>
