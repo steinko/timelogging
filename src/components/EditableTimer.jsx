@@ -34,7 +34,7 @@ export default class EditableTimer extends React.Component <Props,State>{
     this.openForm()
    }
 
-  handelSubmit = (timer:TimerData) => {  
+  handelSubmit = (timer: typeof TimerData) => {  
     this.props.onFormSubmit(timer)
     this.closeForm()
    }

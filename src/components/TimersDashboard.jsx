@@ -1,5 +1,4 @@
-// @flow
-import * as React from 'react'
+import React from 'react'
 import EditableTimerList from './EditableTimerList.jsx' // eslint-disable-line
 import TogableTimerForm from './TogableTimerForm.jsx'  // eslint-disable-line
 import TimerData from './TimerData.jsx'
@@ -10,7 +9,7 @@ import Helper from '../../src/components/Helper.jsx'
 
 type Props = { }
 
-type State = {  timers: Array<TimerData>
+type State = {  timers: Array<typeof TimerData>
              }
 
 /** 
@@ -32,11 +31,11 @@ export default class TimersDashboard extends React.Component <Props,State> {
   }
 
 
-  handleCreateFormSubmit = (timer:TimerData) => {
+  handleCreateFormSubmit = (timer: typeof TimerData) => {
     this.createTimer(timer)
     }
 
-    createTimer = (timer:TimerData) => {
+    createTimer = (timer: typeof TimerData) => {
       const helper = new Helper()
       const t = helper.newTimer(timer)
       this.setState({ 
@@ -44,12 +43,12 @@ export default class TimersDashboard extends React.Component <Props,State> {
       })
      }
 
-     handelEditFormSubmit = (attrs:TimerData) => { 
+     handelEditFormSubmit = (attrs: typeof TimerData) => { 
        this.updateTimer(attrs)
         }
        
 
-      updateTimer = (attrs:TimerData) => { 
+      updateTimer = (attrs: typeof TimerData) => { 
         this.setState({ 
          timers: this.state.timers.map((timer) => { 
            if(timer.id === attrs.id)  { 
