@@ -44,7 +44,7 @@ describe('Unit Test EditableTimer', () => {
   
     it('expext state isOpen true' , () =>  { 
      const editableTimeInstance =  editableTimer.instance()
-     editableTimeInstance.handleEditClick()
+     editableTimeInstance.handelEditClick()
       expect(editableTimer
         .state().isOpen
        )
@@ -62,7 +62,7 @@ describe('Unit Test EditableTimer', () => {
      
         const editableTimerMount = shallow(<EditableTimer  title = { title } />)
         const instance = editableTimerMount.instance()
-        instance.handleEditClick()
+        instance.handelEditClick()
         const timerForm = editableTimerMount.find('TimerForm')
         expect(timerForm.exists()).to.equal(true)
         expect(timerForm.props().title) .to.equal(title)
@@ -73,7 +73,7 @@ describe('Unit Test EditableTimer', () => {
       var id = uuidv4()
         const editableTimerMount = shallow(<EditableTimer  id = { id } />)
         const instance = editableTimerMount.instance()
-        instance.handleEditClick()
+        instance.handelEditClick()
        const timerForm = editableTimerMount.find('TimerForm')
        expect(timerForm.props().id).to.equal(id)
   })
