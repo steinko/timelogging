@@ -2,16 +2,13 @@
 import * as React from 'react'
 import EditableTimerList from './EditableTimerList.jsx' // eslint-disable-line
 import TogableTimerForm from './TogableTimerForm.jsx'  // eslint-disable-line
+import TimerData from './TimerData.jsx'
 
 import uuidv4 from 'uuid/v4'
 import { Grid } from 'semantic-ui-react'
 import Helper from '../../src/components/Helper.jsx'
 
 type Props = { }
-
-type TimerData = { title:string,
-                   id: uuidv4 
-                  }
 
 type State = {  timers: Array<TimerData>
              }
@@ -73,7 +70,7 @@ export default class TimersDashboard extends React.Component <Props,State> {
         <Grid.Column>
           <EditableTimerList
             timers = {this.state.timers } 
-            onFormsSubmit= { this.handleEditFormSubmit}
+            onFormSubmit= { this.handelEditFormSubmit}
           />
           <TogableTimerForm
             onFormSubmit= { this.handleCreateFormSubmit}

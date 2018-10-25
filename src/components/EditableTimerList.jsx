@@ -1,14 +1,12 @@
-// @flow
 import * as React from 'react'
 import EditableTimer from './EditableTimer.jsx'  // eslint-disable-line
+import TimerData from './TimerData.jsx'
 import uuidv4 from  'uuid/v4'
 
-type TimerData = { 
-  id: uuidv4,
-  title: string
- }
+
 type Props = { 
-   timers: Array<TimerData> 
+   timers: Array<TimerData> ,
+   onFormSubmit: any
  }
 
 /**
@@ -17,7 +15,7 @@ type Props = {
 export default class EditableTimerList extends React.Component<Props>  {
   
   render () {
-    const timers = this.props.timers.map((timer) => ( // eslint-disable-line
+    const timers = this.props.timers.map((timer:TimerData) => ( // eslint-disable-line
   
         <EditableTimer // eslint-disable-line
           key = {timer.id}

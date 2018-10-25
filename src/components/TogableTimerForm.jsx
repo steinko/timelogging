@@ -1,6 +1,7 @@
-// @flow
 import * as React from 'react'
 import TimerForm from './TimerForm.jsx' // eslint-disable-line
+import TimerData from './TimerData.jsx'
+
 import { Segment, Button } from 'semantic-ui-react'
 
 type Props = { 
@@ -32,7 +33,7 @@ export default class TogableTimerForm extends React.Component<Props,State> {
       })
     }
 
-    handelFormSubmit = (timer) => { 
+    handelFormSubmit = (timer:TimerData) => { 
       this.props.onFormSubmit(timer)
       this.setState({ isOpen: false })
      }
@@ -40,9 +41,9 @@ export default class TogableTimerForm extends React.Component<Props,State> {
   render () {
     if (this.state.isOpen) { // eslint-disable-line
       return (
-          <TimerForm  id = 'timerForm'
+          <TimerForm  
             onFormSubmit = {this.handelFormSubmit }
-            omFormClose =  {this.handelFormClose }  
+            onFormClose =  {this.handelFormClose }  
           />)
     } else {
       return (

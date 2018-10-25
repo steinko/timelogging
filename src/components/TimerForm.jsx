@@ -3,9 +3,11 @@ import * as React from 'react'
 import { Card, Form , Button, Label  } from 'semantic-ui-react'
 import uuidv4 from 'uuid/v4'
 
-type Props = { id: uuidv4,
-               title: string,
-               onFormSubmit: any }
+type Props = { id: ?uuidv4,
+               title: ?string,
+               onFormSubmit: any ,
+               onFormClose:any 
+              }
 
 type State = { title: string }
 

@@ -19,7 +19,8 @@
     "mocha": "mocha",
     "nyc": "nyc",
     "flow": "flow",
-    "sinon": "sinon"
+    "sinon": "sinon",
+    "uuid": "uuid"
   },
   "author": "CodeMix",
   "license": "ISC",
