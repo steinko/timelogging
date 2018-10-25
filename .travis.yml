@@ -8,8 +8,7 @@ addons:
 install:
 - npm install
 before_script:
-/*- npm run eslint ./src/components/*.*  
-/*- npm run eslint ./cypress/integration/*.*
+
 - npm run flow check --all
 - npm start &
 
