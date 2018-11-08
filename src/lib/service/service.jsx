@@ -4,17 +4,13 @@ import TimerData from '../../components/TimerData.jsx'
 import StartData from '../../components/StartData.jsx'
 import uuidv4 from 'uuid/v4'
 
+
 /**
  * Services that communicate with the servere
  */
 type Props = { }
 export default class Client extends React.Component<Props> {
-  constructor(prop:Props) 
-  {
-    super(prop)
-     this.loadTimers = this.loadTimers.bind()
-  }
-
+ 
   render() { return null }
 
   loadTimersFromFile = async () => {
@@ -80,7 +76,7 @@ export default class Client extends React.Component<Props> {
    /**
  * Service that deletes a timer from the  servere
  */
-   deletTimer = (id: typeof  uuid) => { 
+   deletTimer = (id: typeof  uuidv4) => { 
      return fetch('http://localhost/3030/timers/', {
                  method: "DELETE",
                  headers: {

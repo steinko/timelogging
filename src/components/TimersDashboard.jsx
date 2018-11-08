@@ -3,7 +3,6 @@ import EditableTimerList from './EditableTimerList.jsx' // eslint-disable-line
 import TogableTimerForm from './TogableTimerForm.jsx'  // eslint-disable-line
 import TimerData from './TimerData.jsx'
 
-import uuidv4 from 'uuid/v4'
 import { Grid } from 'semantic-ui-react'
 import Helper from '../../src/components/Helper.jsx'
 import Client from '../lib/service/service.jsx'
