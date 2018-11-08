@@ -27,6 +27,7 @@ export default class Client extends React.Component<Props> {
  */
   loadTimers =  async () => {
        let response =  await fetch('http://localhost:3030/timers')
+
        let data = await response.json()
        console.log(data)
        return data
