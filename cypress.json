@@ -1,3 +1,4 @@
 {
-   "reporter": "nyc"
+   "reporter": "nyc",
+   "baseUrl": "http://localhost:3030"
 }

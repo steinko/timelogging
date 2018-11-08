@@ -1,7 +1,7 @@
 import * as React from 'react'
 import EditableTimer from './EditableTimer.jsx'  // eslint-disable-line
 import TimerData from './TimerData.jsx'
-import uuidv4 from  'uuid/v4'
+
 
 
 type Props = { 

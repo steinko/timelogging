@@ -1,5 +1,5 @@
 {
-  "name": "TimeLogging",
+  "name": "timelogging",
   "version": "1.0.0",
   "description": "React Time Logging",
   "main": "index.js",
@@ -8,9 +8,9 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start& && json-server --watch db.json",
     "build": "react-scripts build",
-    "test": "nyc --reporter=text-lcov cypress run ",
+    "test": "mocha --require @babel/polyfill --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
@@ -25,24 +25,28 @@
   "author": "CodeMix",
   "license": "ISC",
   "dependencies": {
+    "flow-bin": "^0.83.0",
     "prop-types": "^15.6.2",
-    "react-scripts": "^2.0.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-script": "^2.0.5",
+    "react-scripts": "^2.0.4",
     "semantic-ui-react": "^0.82.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "@cypress/webpack-preprocessor": "^3.0.0",
     "ajv": "^6.5.4",
     "babel-loader": "^8.0.4",
+    "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "cypress": "^3.1.0",
+    "cypress": "^3.1.1",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.6.1",
@@ -54,10 +58,11 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
-    "flow-bin": "^0.83.0",
     "istanbul-lib-instrument": "^3.0.0",
+    "mocha": "^5.2.0",
+    "node-fetch": "^2.2.1",
     "nyc": "^13.0.1",
-    "sinon": "^7.0.0",
+    "sinon": "^7.1.1",
     "webpack": "^4.20.2"
   },
   "browserslist": [
@@ -65,5 +70,17 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "node": {
+    "dns": "empty",
+    "net": "empty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steinko/timelogging.git"
+  },
+  "bugs": {
+    "url": "https://github.com/steinko/timelogging/issues"
+  },
+  "homepage": "https://github.com/steinko/timelogging#readme"
 }

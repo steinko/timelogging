@@ -6,6 +6,7 @@ import sinon from 'sinon'
 
 import TimersDashboard from '../../src/components/TimersDashboard.jsx'
 import TimerForm from '../../src/components/TimerForm.jsx'
+import Client from '../../src/lib/service/service'
 configure({ adapter: new Adapter() })
 
 describe('Unit test Timers Dashboard', () => {
@@ -85,7 +86,14 @@ describe('Unit test Timers Dashboard', () => {
       expect(editableTimerList.props().onFormSubmit).to.equal(instance.handelEditFormSubmit(timer))
    })
 
+    it('shold load timers from server ' , () => { 
+      const client = new Client()
+      client.loadTimersFromFile()
+      const instance  = timersDashboard.instance()
+      instance.componentDidMount()
+      expect(timersDashboard.state().timers.lenght).to.equal(2)
+   })
+
 
 
 })
-
