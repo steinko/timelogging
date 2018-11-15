@@ -7,7 +7,7 @@ configure({ adapter: new Adapter() })
 
 
 describe('Unit test Helper', () => { 
-  it( 'shoul generate id', () => {
+  xit( 'shoul generate id', () => {
     const timerForm = shallow( <TimerForm title = 'Title' project = 'Project' />)
     const helper = new Helper()
     const timerFormWithId = helper.newTimer(timerForm)
