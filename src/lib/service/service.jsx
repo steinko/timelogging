@@ -37,15 +37,17 @@ export default class Client extends React.Component<Props> {
   /**
  * Service that update timer data to the  servere
  */
-    insertTimer = ( timer: typeof TimerData) => {
-        return fetch('http://localhost/3030/timers', {
-                 method: "POST",
+    insertTimer =  async ( timer: typeof TimerData) => {
+      let response = await fetch('http://localhost:3030/timers', {
+                 method: "post",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
                   },
-                body: JSON.stringify(timer)
-               })
-  }
+                 body: JSON.stringify(timer)
+                 })
+     let data = await response.json()
+     return data
+  }  
 
 
  /**
@@ -64,14 +66,16 @@ export default class Client extends React.Component<Props> {
 /**
  * Service that update  a timer on the  servere
  */
-   updateTimer = (timerData: typeof  TimerData) => { 
-     return fetch('http://localhost/3030/timers/start', {
-                 method: "PUT",
+   updateTimer =  async (timerData: typeof  TimerData) => { 
+     let response = await fetch('http://localhost:3030/timer', {
+                 method: "put",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
                   },
                 body: JSON.stringify(timerData)
                })
+      let data = await response.json()
+      return data
    }
 
    /**

@@ -8,7 +8,7 @@ import TimerData from './TimerData.jsx'
 
 
 
-type Props = {
+type Props = { 
   onFormSubmit:any,
   title: string,
   id: uuidv4,
@@ -29,7 +29,7 @@ export default class EditableTimer extends React.Component <Props,State>{
 
       }
   }
-
+// eslint-enable
   handelEditClick = () => { 
     this.openForm()
    }

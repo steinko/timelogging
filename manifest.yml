@@ -6,6 +6,11 @@ applications:
   env:
     CF_TRACE: trace.log
  
+services:
+- performanceTester 
+    
+command: bzt /taurus/test.yaml
+ 
     
 
 

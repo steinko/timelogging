@@ -44,10 +44,12 @@ export default class TimersDashboard extends React.Component <Props,State> {
     }
        
 
-   updateTimer = (attrs: typeof TimerData) => { 
+   updateTimer =  async (attrs: typeof TimerData) => { 
       this.setState({ 
       timers: this.state.timers.map((timer) => { 
         if(timer.id === attrs.id)  {
+           // const client = new Client()
+           // const updatedTimer = await client.updateTimer(attrs)
             return Object.assign( { }, timer,{
             title: attrs.title
           })

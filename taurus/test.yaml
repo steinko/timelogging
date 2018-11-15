@@ -1,0 +1,16 @@
+---
+execution: 
+- scenario: loadWeb   
+  concurrency: 100
+  hold-for: 2m
+
+scenarios:
+  loadWeb:
+    requests:
+    - label: timeLog
+      method: GET
+      url: http://localhost:3000
+
+
+
+    
