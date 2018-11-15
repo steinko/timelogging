@@ -5,9 +5,6 @@ applications:
   disk_quota: 1G
   env:
     CF_TRACE: trace.log
- 
-services:
-- performanceTester 
     
 command: bzt /taurus/test.yaml
  
