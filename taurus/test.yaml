@@ -1,16 +1,28 @@
 ---
 execution: 
 - scenario: loadWeb   
-  concurrency: 100
+  concurrency: 1
   hold-for: 2m
 
 scenarios:
   loadWeb:
     requests:
-    - label: timeLog
-      method: GET
-      url: http://localhost:3000
+    - url: http://localhost:3000
+      lable: loadWebLabel
 
+provisioning: cloud
 
+modules:
+ blazemeter:
+    token: 2460fcfb1e9b205a92083271:3785433a14a0b8086e0eb6ec62474e6d42d25d505b8ef7d4ed6799a8b08b3f49febc0ede
+    timeout: 10s
+    browser-open: start
+    check-interval: 5s
+    project: TimeLogging
+    public-report: false
 
-    
+reporting:
+- module: passfail
+  criteria:
+  - avg-rt>150ms for 10s, stop as failed
+  - failures of loadWebLabel>20% for 10s, continue as failed

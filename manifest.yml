@@ -6,7 +6,6 @@ applications:
   env:
     CF_TRACE: trace.log
     
-command: bzt /taurus/test.yaml
  
     
 
