@@ -7,7 +7,6 @@ services:
 
 script:
 - docker build -t steinko/timeloginclient .
-- docker run  -p 3000:3000 -it  steinko/timelogingserver
 deploy:
   provider: script
   script: bash docker_push
