@@ -12,7 +12,7 @@ type Props = { }
 type State = {serverURL:string }
 export default class Client extends React.Component<Props,State> {
  
-  constructor(props) {
+  constructor(props:Props) {
     super(props)
     this.state = {
         serverURL:  process.env.SERVER_URL || 'http://localhost:3030',

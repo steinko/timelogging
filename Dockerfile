@@ -5,6 +5,9 @@ USER root
 RUN mkdir app
 COPY . ./app
 WORKDIR ./app
-RUN npm install
-CMD ["npm", "start"]
+RUN npm install ls -s
+##RUN npm run flow check --all
+RUN npm start&
+##RUN npm run cypress:run
+CMD [ ]
  
