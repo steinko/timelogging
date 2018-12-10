@@ -15,7 +15,7 @@ export default class Client extends React.Component<Props,State> {
   constructor(props:Props) {
     super(props)
     this.state = {
-        serverURL:  process.env.SERVER_URL || 'http://localhost:3030',
+        serverURL:  'http://timelogingserverservice'
    } 
  }
   render() { return null }
