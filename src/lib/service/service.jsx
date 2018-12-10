@@ -9,8 +9,15 @@ import uuidv4 from 'uuid/v4'
  * Services that communicate with the servere
  */
 type Props = { }
-export default class Client extends React.Component<Props> {
+type State = {serverURL:string }
+export default class Client extends React.Component<Props,State> {
  
+  constructor(props) {
+    super(props)
+    this.state = {
+        serverURL:  process.env.SERVER_URL || 'http://localhost:3030',
+   } 
+ }
   render() { return null }
 
   loadTimersFromFile = async () => {
@@ -21,15 +28,12 @@ export default class Client extends React.Component<Props> {
     }
     
 
-
  /**
  * Service that load timer data from servere
  */
   loadTimers =  async () => {
-       let response =  await fetch('http://localhost:3030/timers')
-
+       let response =  await fetch(this.state.serverURL + '/timer')
        let data = await response.json()
-       console.log(data)
        return data
   }
 
@@ -38,7 +42,7 @@ export default class Client extends React.Component<Props> {
  * Service that update timer data to the  servere
  */
     insertTimer =  async ( timer: typeof TimerData) => {
-      let response = await fetch('http://localhost:3030/timers', {
+      let response = await fetch(this.state.serverURL  + '/timer', {
                  method: "post",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
@@ -54,7 +58,7 @@ export default class Client extends React.Component<Props> {
  * Service that starts  a timer on the  servere
  */
     startTimer = (start: typeof  StartData) => { 
-     return fetch('http://localhost/3030/timers/start', {
+     return fetch(this.state.serverURL + '/timer/start', {
                  method: "POST",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
@@ -67,7 +71,7 @@ export default class Client extends React.Component<Props> {
  * Service that update  a timer on the  servere
  */
    updateTimer =  async (timerData: typeof  TimerData) => { 
-     let response = await fetch('http://localhost:3030/timer', {
+     let response = await fetch(this.state.serverURL  + '/timer' , {
                  method: "put",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
@@ -82,7 +86,7 @@ export default class Client extends React.Component<Props> {
  * Service that deletes a timer from the  servere
  */
    deletTimer = (id: typeof  uuidv4) => { 
-     return fetch('http://localhost/3030/timers/', {
+     return fetch(this.state.serverURL  + '/timer', {
                  method: "DELETE",
                  headers: {
                    "Content-Type": "application/json; charset=utf-8"
