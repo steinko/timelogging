@@ -3,17 +3,8 @@ language: minimal
 services:
   - docker
 
-addons:
-  sonarcloud:
-
 script:
 - docker build -t steinko/timeloginclient .
-- docker run  -p 3000:3000 -it  steinko/timeloginclient  npm run flow check --all
-- docker run  -p 3000:3000 -it  steinko/timeloginclient  npm start 
-- docker run  -p 3000:3000 -it  steinko/timeloginclient  npm run cypress:run
-- docker run  -p 3000:3000 -it  steinko/timeloginclient  sonar-scanner   -Dsonar.projectKey=timerloginclient   -Dsonar.organization=steinko-github   -Dsonar.sources=./src   -Dsonar.host.url=https://sonarcloud.io  -Dsonar.login=b0c0d7ce4ab856b9ebc10a2a6548fa7c58eecc8e
-
-##- curl http://localhost:3030.
 
 deploy:
   provider: script
