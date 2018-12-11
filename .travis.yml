@@ -7,6 +7,7 @@ services:
 
 script:
 - docker build -t steinko/timeloginclient .
+- docker run steinko/timeloginclient cypress:run
 deploy:
   provider: script
   script: bash docker_push
