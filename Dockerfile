@@ -4,6 +4,6 @@ USER root
 RUN mkdir app
 COPY . ./app
 WORKDIR ./app
-RUN npm install 
+RUN npm install ls -s
 CMD [ "npm", "start" ]
  
